@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Gran Johan | En Vivo</title>
+    <style>
+        /* Configuración base de la página */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000000; /* Fondo negro puro */
+            color: #ffffff;
+            margin: 0;
+            padding: 20px 10px; 
+            display: flex;
+            flex-direction: column; /* Alinea la tarjeta y el bloque de anuncios uno abajo del otro */
+            justify-content: flex-start; 
+            align-items: center; /* Centra horizontalmente ambos bloques */
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        /* Contenedor central principal */
+        .tarjeta-radio {
+            background-color: #0b0b0e; 
+            width: 100%;
+            max-width: 400px; 
+            margin-top: 15px; 
+            padding: 20px;
+            border-radius: 15px; 
+            box-shadow: 0px 0px 20px rgba(246, 250, 1, 0.993); 
+            text-align: center;
+            border: 1px solid #d4af37; /* Borde dorado */
+            box-sizing: border-box;
+        }
+
+        /* Contenedor de la Imagen / Logo */
+        .imagen-emisora-container {
+            width: 100%;
+            max-width: 340px; 
+            margin: 0 auto 15px auto; 
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+        }
+
+        .imagen-emisora-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        /* Estilos del botón llamativo de la app */
+        .contenedor-app {
+            margin: 25px 0 15px 0; 
+            display: flex;
+            justify-content: center;
+        }
+
+        .boton-descarga {
+            display: inline-flex;
+            align-items: center;
+            background-color: #111115;
+            color: white;
+            text-decoration: none;
+            padding: 10px 22px;
+            border-radius: 12px;
+            border: 2px solid #e81e4d; 
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0px 0px 15px rgba(232, 30, 77, 0.4);
+            animation: pulsoBrillante 2s infinite;
+        }
+
+        .boton-descarga:hover {
+            background-color: #e81e4d;
+            transform: scale(1.05);
+            box-shadow: 0px 0px 25px rgba(232, 30, 77, 0.8);
+        }
+
+        .boton-descarga .icono-play {
+            font-size: 24px;
+            margin-right: 12px;
+        }
+
+        .boton-descarga .texto-boton {
+            text-align: left;
+        }
+
+        .boton-descarga .texto-pequeno {
+            font-size: 10px;
+            display: block;
+            color: #a0a0b0;
+            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .boton-descarga .texto-grande {
+            font-size: 16px;
+            display: block;
+        }
+
+        @keyframes pulsoBrillante {
+            0% { box-shadow: 0px 0px 10px rgba(232, 30, 77, 0.4); }
+            50% { box-shadow: 0px 0px 25px rgba(232, 30, 77, 0.8); border-color: #ff4a75; }
+            100% { box-shadow: 0px 0px 10px rgba(232, 30, 77, 0.4); }
+        }
+
+        /* Contenedor para el texto de abajo */
+        .texto-inferior {
+            margin-top: 15px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .texto-inferior p {
+            font-size: 15px;
+            color: #a0a0b0;
+            margin: 5px 0;
+        }
+
+        /* 🚀 CONTENEDOR PUBLICITARIO (FUERA DE LA TARJETA) */
+        .contenedor-publicidad {
+            width: 100%;
+            max-width: 400px; /* Mismo ancho de la tarjeta para mantener simetría */
+            margin-top: 30px; /* Espacio prudente abajo de la tarjeta principal */
+            padding: 15px;
+            background-color: #0b0b0e;
+            border: 1px dashed #3a3a4a; /* Línea discontinua discreta */
+            border-radius: 12px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .publicidad-titulo {
+            font-size: 11px;
+            color: #555565;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .publicidad-espacio {
+            min-height: 90px; /* Altura estándar para banners móviles (320x50 o 300x250) */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #121216;
+            border-radius: 8px;
+            color: #444454;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CONTENEDOR CENTRAL (TARJETA DE RADIO) -->
+    <div class="tarjeta-radio">
+        
+        <!-- CONTENEDOR DE LA IMAGEN (EL GRAN JOHAN) -->
+        <div class="imagen-emisora-container">
+            <img src="logo1.jpeg" alt="El Gran Johan">
+        </div>
+
+        <!-- REPRODUCTOR OFICIAL DE CASTER.FM -->
+        <div data-type="newStreamPlayer" data-publicToken="55dc8cfc-09b6-453a-a911-2c8672bd9e70" data-theme="dark" data-color="e81e4d" data-channelId="" data-rendered="false" class="cstrEmbed"><a href="https://www.caster.fm">Shoutcast Hosting</a> <a href="https://www.caster.fm">Stream Hosting</a> <a href="https://www.caster.fm">Radio Server Hosting</a></div><script src="//cdn.cloud.caster.fm//widgets/embed.js"></script>
+
+        <!-- BOTÓN LLAMATIVO PARA DESCARGAR LA APP -->
+        <div class="contenedor-app">
+            <a href="https://msoftware.uk/NewEmisorApp-Update/NewEmisorApp7.3.apk" class="boton-descarga" target="_blank">
+                <span class="icono-play">🤖</span>
+                <span class="texto-boton">
+                    <span class="texto-pequeno">Disponible para Android</span>
+                    <span class="texto-pequeno">100% Segura!</span>
+                    <span class="texto-grande">Descargar App</span>
+                </span>
+            </a>
+        </div>
+
+        <!-- TEXTO DEBAJO DEL REPRODUCTOR -->
+        <div class="texto-inferior">
+            <p>🎙️ ¡Gracias por sintonizar **El Gran Johan**!</p>
+        </div>
+
+    </div> <!-- FIN DE LA TARJETA DE RADIO -->
+
+
+    <!-- 🚀 ESPACIO RESERVADO PARA ANUNCIOS -->
+    <div class="contenedor-publicidad">
+        <p class="publicidad-titulo">Publicidad</p>
+        <div class="publicidad-espacio">
+            <!-- 🔽 CUANDO TENGAS ADSENSE, PEGA AQUÍ TU CÓDIGO <script> DE ANUNCIO 🔽 -->
+            
+            <span>Espacio reservado para banner publicitario</span>
+
+            <!-- 🔼 CUANDO TENGAS ADSENSE, PEGA AQUÍ TU CÓDIGO DE ANUNCIO 🔼 -->
+        </div>
+    </div>
+
+</body>
+</html>
