@@ -22,7 +22,7 @@
 
         /* Contenedor central principal */
         .tarjeta-radio {
-            background-color: #0b0b0e; 
+            background-color: #000000; 
             width: 100%;
             max-width: 400px; 
             margin-top: 15px; 
@@ -126,8 +126,20 @@
         .contenedor-publicidad {
             width: 100%;
             max-width: 400px; /* Mismo ancho de la tarjeta para mantener simetría */
-            margin-top: 30px; /* Espacio prudente abajo de la tarjeta principal */
+            margin-top: 15px; /* Espacio prudente abajo de la tarjeta principal */
             padding: 15px;
+            background-color: #0b0b0e;
+            border: 1px dashed #3a3a4a; /* Línea discontinua discreta */
+            border-radius: 12px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .contenedor-publicidad-arriba {
+            width: 100%;
+            max-width: 400px; /* Mismo ancho de la tarjeta para mantener simetría */
+            margin-top:1px; /* Espacio prudente abajo de la tarjeta principal */
+            padding: 5px;
             background-color: #0b0b0e;
             border: 1px dashed #3a3a4a; /* Línea discontinua discreta */
             border-radius: 12px;
@@ -145,54 +157,55 @@
         }
 
         .publicidad-espacio {
-            min-height: 90px; /* Altura estándar para banners móviles (320x50 o 300x250) */
+            min-height: 255px; /* Altura estándar para banners móviles (320x50 o 300x250) */
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #121216;
+            background-color: #000000;
             border-radius: 8px;
-            color: #444454;
+            color: #000000;
+            font-size: 13px;
+        }
+
+        .ads-superior-box{
+            min-height: 70px; /* Altura estándar para banners móviles (320x50 o 300x250) */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000000;
+            border-radius: 8px;
+            color: #000000;
             font-size: 13px;
         }
     </style>
 </head>
 <body>
 
-        <!-- 🚀 ESPACIO RESERVADO PARA ANUNCIOS -->
-    <div class="contenedor-publicidad">
+    <div class="contenedor-publicidad-arriba">
         <p class="publicidad-titulo">Publicidad</p>
-        <div class="publicidad-espacio">
-        <script>
-          atOptions = {
-            'key' : 'ab324a06e328fdef5c9f83e517f1877a',
-            'format' : 'iframe',
-            'height' : 50,
-            'width' : 320,
-            'params' : {}
-          };
-        </script>
-        <script src="https://www.highrevenueformat.com/ab324a06e328fdef5c9f83e517f1877a/invoke.js"></script>
+        <div class="ads-superior-box" id="banner-arriba">
+                <!-- El código de Adsterra se inyectará aquí de forma automática -->
         </div>
     </div>
 
     <!-- CONTENEDOR CENTRAL (TARJETA DE RADIO) -->
     <div class="tarjeta-radio">
-        
+
         <!-- CONTENEDOR DE LA IMAGEN (EL GRAN JOHAN) -->
         <div class="imagen-emisora-container">
             <img src="logo1.jpeg" alt="El Gran Johan">
         </div>
 
         <!-- REPRODUCTOR OFICIAL DE CASTER.FM -->
-        <div data-type="newStreamPlayer" data-publicToken="55dc8cfc-09b6-453a-a911-2c8672bd9e70" data-theme="dark" data-color="e81e4d" data-channelId="" data-rendered="false" class="cstrEmbed"><a href="https://www.caster.fm">Shoutcast Hosting</a> <a href="https://www.caster.fm">Stream Hosting</a> <a href="https://www.caster.fm">Radio Server Hosting</a></div><script src="//cdn.cloud.caster.fm//widgets/embed.js"></script>
+         <div data-type="newStreamPlayer" data-publicToken="55dc8cfc-09b6-453a-a911-2c8672bd9e70" data-theme="dark" data-color="e81e4d" data-channelId="" data-rendered="false" class="cstrEmbed"><a href="https://www.caster.fm">Shoutcast Hosting</a> <a href="https://www.caster.fm">Stream Hosting</a> <a href="https://www.caster.fm">Radio Server Hosting</a></div><script src="//cdn.cloud.caster.fm//widgets/embed.js"></script>
 
         <!-- BOTÓN LLAMATIVO PARA DESCARGAR LA APP -->
         <div class="contenedor-app">
-            <a href="https://msoftware.uk/NewEmisorApp-Update/NewEmisorApp7.3.apk" class="boton-descarga" target="_blank">
+            <a href="#" class="boton-descarga" target="_blank">
                 <span class="icono-play">🤖</span>
                 <span class="texto-boton">
                     <span class="texto-pequeno">Disponible para Android</span>
-                    <span class="texto-pequeno">100% Segura!</span>
+                    <span class="texto-pequeno">100% segura</span>
                     <span class="texto-grande">Descargar App</span>
                 </span>
             </a>
@@ -200,29 +213,93 @@
 
         <!-- TEXTO DEBAJO DEL REPRODUCTOR -->
         <div class="texto-inferior">
-            <p>🎙️ ¡Gracias por sintonizar **El Gran Johan**!</p>
-            <p>DESARROLLADO POR **MSOFTWARE**</p>
+            <p>🎙 *¡Gracias por sintonizar El Gran Johan!*</p>
+            <p>¡Desarrollado por <b>Msoftware</b>! </p>
         </div>
 
     </div> <!-- FIN DE LA TARJETA DE RADIO -->
 
 
-    <!-- 🚀 ESPACIO RESERVADO PARA ANUNCIOS -->
+    <!-- 🚀 2. RECUADRO AUTO-REFRESCANTE PARA EL BANNER INFERIOR (300x250) -->
     <div class="contenedor-publicidad">
         <p class="publicidad-titulo">Publicidad</p>
-        <div class="publicidad-espacio">
-            <script>
-              atOptions = {
-                'key' : 'e8213ad612ae47b8693959bc4709ab6e',
-                'format' : 'iframe',
-                'height' : 250,
-                'width' : 300,
-                'params' : {}
-              };
-            </script>
-            <script src="https://www.highrevenueformat.com/e8213ad612ae47b8693959bc4709ab6e/invoke.js"></script>
+        <div class="publicidad-espacio" id="banner-abajo">
+            <!-- El código de Adsterra se inyectará aquí de forma automática -->
         </div>
     </div>
+
+    <!-- 🛠️ SISTEMA DE ROTACIÓN/REFRESCO AUTOMÁTICO CADA 60 SEGUNDOS -->
+
+
+
+<script>
+    // ==========================================
+    // CARGAR BANNER SUPERIOR
+    // ==========================================
+    function cargarBannerArriba() {
+        const contenedor = document.getElementById("banner-arriba");
+        if (!contenedor) return;
+
+        contenedor.innerHTML = "";
+
+        window.atOptions = {
+            'key': 'ab324a06e328fdef5c9f83e517f1877a',
+            'format': 'iframe',
+            'height': 50,
+            'width': 320,
+            'params': {}
+        };
+
+        const script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://www.highrevenueformat.com/ab324a06e328fdef5c9f83e517f1877a/invoke.js";
+        contenedor.appendChild(script);
+    }
+
+    // ==========================================
+    // CARGAR BANNER INFERIOR
+    // ==========================================
+    function cargarBannerAbajo() {
+        const contenedor = document.getElementById("banner-abajo");
+        if (!contenedor) return;
+
+        contenedor.innerHTML = "";
+
+        window.atOptions = {
+            'key': 'e8213ad612ae47b8693959bc4709ab6e',
+            'format': 'iframe',
+            'height': 250,
+            'width': 300,
+            'params': {}
+        };
+
+        const script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://www.highrevenueformat.com/e8213ad612ae47b8693959bc4709ab6e/invoke.js";
+        contenedor.appendChild(script);
+    }
+
+    // ==========================================
+    // CARGA INICIAL (con separación real entre uno y otro)
+    // ==========================================
+    window.addEventListener("DOMContentLoaded", function () {
+        cargarBannerArriba();
+
+        setTimeout(function () {
+            cargarBannerAbajo();
+        }, 6000); // separación amplia para que "arriba" termine antes de que arranque "abajo"
+    });
+
+    // ==========================================
+    // REFRESCO CADA 30 SEGUNDOS, DESFASADOS ENTRE SÍ
+    // ==========================================
+    setInterval(cargarBannerArriba, 30000);
+
+    // Arranca su propio ciclo de 30s, pero desplazado 15s respecto al de arriba
+    setTimeout(function () {
+        setInterval(cargarBannerAbajo, 30000);
+    }, 15000);
+</script>
 
 </body>
 </html>
