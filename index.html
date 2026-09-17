@@ -158,21 +158,20 @@
 </head>
 <body>
 
-    <!-- 🚀 ESPACIO RESERVADO PARA ANUNCIOS SUPERIOR -->
+        <!-- 🚀 ESPACIO RESERVADO PARA ANUNCIOS -->
     <div class="contenedor-publicidad">
         <p class="publicidad-titulo">Publicidad</p>
-        <!-- Le agregamos un ID único 'anuncio-top' para poder identificarlo con JavaScript -->
-        <div class="publicidad-espacio" id="anuncio-top">
-            <script>
-              atOptions = {
-                'key' : 'ab324a06e328fdef5c9f83e517f1877a',
-                'format' : 'iframe',
-                'height' : 50,
-                'width' : 320,
-                'params' : {}
-              };
-            </script>
-            <script src="https://www.highrevenueformat.com/ab324a06e328fdef5c9f83e517f1877a/invoke.js"></script>
+        <div class="publicidad-espacio">
+        <script>
+          atOptions = {
+            'key' : 'ab324a06e328fdef5c9f83e517f1877a',
+            'format' : 'iframe',
+            'height' : 50,
+            'width' : 320,
+            'params' : {}
+          };
+        </script>
+        <script src="https://www.highrevenueformat.com/ab324a06e328fdef5c9f83e517f1877a/invoke.js"></script>
         </div>
     </div>
 
@@ -208,11 +207,10 @@
     </div> <!-- FIN DE LA TARJETA DE RADIO -->
 
 
-    <!-- 🚀 ESPACIO RESERVADO PARA ANUNCIOS INFERIOR -->
+    <!-- 🚀 ESPACIO RESERVADO PARA ANUNCIOS -->
     <div class="contenedor-publicidad">
         <p class="publicidad-titulo">Publicidad</p>
-        <!-- Le agregamos un ID único 'anuncio-bottom' para poder identificarlo con JavaScript -->
-        <div class="publicidad-espacio" id="anuncio-bottom">
+        <div class="publicidad-espacio">
             <script>
               atOptions = {
                 'key' : 'e8213ad612ae47b8693959bc4709ab6e',
@@ -225,33 +223,6 @@
             <script src="https://www.highrevenueformat.com/e8213ad612ae47b8693959bc4709ab6e/invoke.js"></script>
         </div>
     </div>
-
-    <!-- 🛠️ SISTEMA DE ACTUALIZACIÓN AUTOMÁTICA SEGURO (CADA 60 SEGUNDOS) -->
-    <script>
-        function refrescarContenedorAd(idContenedor) {
-            const contenedor = document.getElementById(idContenedor);
-            if (!contenedor) return;
-
-            // Buscamos el elemento iframe interno que genera automáticamente Adsterra
-            const iframeInterno = contenedor.querySelector('iframe');
-            
-            if (iframeInterno) {
-                // Si el iframe ya existe, forzamos su recarga de forma nativa y segura
-                iframeInterno.src = iframeInterno.src;
-            } else {
-                // Si aún está cargando la página por primera vez, volvemos a evaluar el contenido HTML interno
-                const htmlOriginal = contenedor.innerHTML;
-                contenedor.innerHTML = '';
-                contenedor.innerHTML = htmlOriginal;
-            }
-        }
-
-        // Ejecutar el refresco en ambos bloques publicitarios cada 60000 ms (1 minuto exacto)
-        setInterval(function() {
-            refrescarContenedorAd('anuncio-top');
-            refrescarContenedorAd('anuncio-bottom');
-        }, 30000);
-    </script>
 
 </body>
 </html>
