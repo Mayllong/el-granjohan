@@ -54,7 +54,7 @@
 
         /* Estilos del botón llamativo de la app */
         .contenedor-app {
-            margin: 25px 0 15px 0; 
+            margin: 10px 0 15px 0; 
             display: flex;
             justify-content: center;
         }
@@ -196,9 +196,15 @@
             <img src="logo1.jpeg" alt="El Gran Johan">
         </div>
 
-        <!-- REPRODUCTOR OFICIAL DE CASTER.FM -->
-         <div data-type="newStreamPlayer" data-publicToken="55dc8cfc-09b6-453a-a911-2c8672bd9e70" data-theme="dark" data-color="e81e4d" data-channelId="" data-rendered="false" class="cstrEmbed"><a href="https://www.caster.fm">Shoutcast Hosting</a> <a href="https://www.caster.fm">Stream Hosting</a> <a href="https://www.caster.fm">Radio Server Hosting</a></div><script src="//cdn.cloud.caster.fm//widgets/embed.js"></script>
-        
+                <!--REPRODUCTOR DE RADIO - Solo audio-->
+            
+            <div style="max-width: 480px; margin: 1px auto 1px auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #000000; border-radius: 12px; padding: auto; color: #ff0101; text-align: center;">
+            <audio id="audioPlayer" controls controlsList="nodownload" autoplay="true" preload="true" style="width: 100%;">
+                <source src="https://radio-proxy.mayllong10.workers.dev/stream" type="audio/mpeg">
+                Tu navegador no soporta la reproducción de audio HTML5.
+            </audio>
+            </div>
+
         <!-- BOTÓN LLAMATIVO PARA DESCARGAR LA APP -->
         <div class="contenedor-app">
             <a href="#" class="boton-descarga" target="_blank">
@@ -214,6 +220,7 @@
         <!-- TEXTO DEBAJO DEL REPRODUCTOR -->
         <div class="texto-inferior">
             <p>🎙 *¡Gracias por sintonizar El Gran Johan!*</p>
+            <p>Mira las ligas mas importantes del <b>FUTBOL</b> en NewTvApp mas informacion en <a href="https://msoftware.uk" target="_blank">msoftware.uk</a></p> 
             <p>¡Desarrollado por <b>Msoftware</b>! </p>
         </div>
 
@@ -299,20 +306,6 @@
     setTimeout(function () {
         setInterval(cargarBannerAbajo, 30000);
     }, 15000);
-
-  const audio = document.getElementById("audioPlayer");
-  const estado = document.getElementById("estado");
- 
-  audio.addEventListener("playing", () => {
-    estado.textContent = "✅ Reproduciendo correctamente";
-    estado.style.color = "#4ade80";
-  });
- 
-  audio.addEventListener("error", () => {
-    estado.textContent = "❌ Error al cargar el stream (revisa la consola del navegador con F12)";
-    estado.style.color = "#f87171";
-  });
-  
 </script>
 
 </body>
