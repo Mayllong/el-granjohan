@@ -196,19 +196,15 @@
             <img src="logo1.jpeg" alt="El Gran Johan">
         </div>
 
-        <div id="reproductor-stream" style="max-width: 480px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #1a1a1a; border-radius: 12px; padding: 20px; color: #fff;">
-  
-          <div style="text-align: center; margin-bottom: 16px;">
-            <div id="ahora-suena" style="font-size: 14px; color: #aaa; margin-bottom: 4px;">Cargando...</div>
-            <div id="titulo-cancion" style="font-size: 18px; font-weight: 600; min-height: 24px;">—</div>
-          </div>
+        <div style="max-width: 480px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #1a1a1a; border-radius: 12px; padding: 20px; color: #fff; text-align: center;">
+          <div style="font-size: 14px; color: #aaa; margin-bottom: 12px;">Prueba de reproductor</div>
          
           <audio id="audioPlayer" controls preload="none" style="width: 100%;">
-            <source src="http://78.129.237.51:22529/;stream.mp3" type="audio/mpeg">
+            <source src="https://78.129.237.51:22529/;stream.mp3" type="audio/mpeg">
             Tu navegador no soporta la reproducción de audio HTML5.
           </audio>
          
-          <div id="estado-metadata" style="font-size: 11px; color: #666; text-align: center; margin-top: 8px;"></div>
+          <div id="estado" style="font-size: 12px; color: #888; margin-top: 10px;"></div>
         </div>
         
         <!-- BOTÓN LLAMATIVO PARA DESCARGAR LA APP -->
@@ -312,118 +308,19 @@
         setInterval(cargarBannerAbajo, 30000);
     }, 15000);
 
-
-    (function () {
-  // ============================================
-  // CONFIGURA AQUÍ
-  // ============================================
-  const STREAM_URL = "http://78.129.237.51:22529/;stream.mp3"; // tu URL directa del stream
- 
-  // Confirmado: tu servidor es Shoutcast v1, que expone metadatos como texto
-  // plano en /7.html (no JSON). Formato: oyentes,estado,pico,max,unicos,bitrate,titulo
-  const METADATA_TXT_URL = "http://78.129.237.51:22529/7.html";
- 
-  // Cada cuánto revisar metadatos (en milisegundos)
-  const INTERVALO_ACTUALIZACION = 10000; // 10 segundos
-  // ============================================
- 
   const audio = document.getElementById("audioPlayer");
-  const source = audio.querySelector("source");
-  const tituloEl = document.getElementById("titulo-cancion");
-  const ahoraSuenaEl = document.getElementById("ahora-suena");
-  const estadoEl = document.getElementById("estado-metadata");
+  const estado = document.getElementById("estado");
  
-  source.src = STREAM_URL;
-  audio.load();
- 
-  // MÉTODO A: formato texto de Shoutcast v1 (/7.html)
-  // Respuesta ejemplo: 0,1,4,10000,0,128,Es Mi Mujer
-  async function actualizarViaTexto() {
-    try {
-      const res = await fetch(METADATA_TXT_URL, { cache: "no-store" });
-      const texto = (await res.text()).trim();
- 
-      // Los primeros 6 campos son numéricos; todo lo que viene después
-      // del 6to coma es el título (puede contener comas también).
-      const partes = texto.split(",");
-      const titulo = partes.slice(6).join(",").trim();
- 
-      if (titulo) {
-        tituloEl.textContent = titulo;
-        ahoraSuenaEl.textContent = "🎵 Sonando ahora";
-        estadoEl.textContent = "";
-      } else {
-        estadoEl.textContent = "No se pudo extraer el título de la respuesta.";
-        console.log("Respuesta cruda del servidor:", texto);
-      }
-    } catch (err) {
-      estadoEl.textContent = "No se pudo leer /7.html (revisa CORS o que la URL responda).";
-      console.error("Error obteniendo metadatos de texto:", err);
-    }
-  }
- 
-  // MÉTODO B: metadatos ICY embebidos en el propio stream (respaldo)
-  // Nota: requiere que el servidor permita CORS y exponga la cabecera Icy-MetaData.
-  // No funciona en todos los navegadores ni todos los servidores.
-  async function actualizarViaICY() {
-    try {
-      const res = await fetch(STREAM_URL, {
-        headers: { "Icy-MetaData": "1" },
-      });
-      const metaInt = parseInt(res.headers.get("icy-metaint"));
-      if (!metaInt) {
-        estadoEl.textContent = "El servidor no expone icy-metaint (metadatos no disponibles vía este método).";
-        return;
-      }
- 
-      const reader = res.body.getReader();
-      let bytesLeidos = 0;
-      let buffer = new Uint8Array(0);
- 
-      while (true) {
-        const { value, done } = await reader.read();
-        if (done) break;
- 
-        buffer = concatBuffers(buffer, value);
- 
-        if (bytesLeidos + value.length >= metaInt) {
-          const offset = metaInt - bytesLeidos;
-          const metaLength = buffer[offset] * 16;
-          if (metaLength > 0) {
-            const metaBytes = buffer.slice(offset + 1, offset + 1 + metaLength);
-            const metaStr = new TextDecoder("utf-8").decode(metaBytes);
-            const match = metaStr.match(/StreamTitle='([^']*)'/);
-            if (match && match[1]) {
-              tituloEl.textContent = match[1];
-              ahoraSuenaEl.textContent = "🎵 Sonando ahora";
-            }
-          }
-          reader.cancel(); // ya obtuvimos un bloque, cortamos la conexión de lectura
-          break;
-        }
-      }
-    } catch (err) {
-      estadoEl.textContent = "El método ICY directo falló (normalmente por CORS). Usa el endpoint JSON si tu proveedor lo ofrece.";
-      console.error("Error leyendo metadatos ICY:", err);
-    }
-  }
- 
-  function concatBuffers(a, b) {
-    const c = new Uint8Array(a.length + b.length);
-    c.set(a, 0);
-    c.set(b, a.length);
-    return c;
-  }
- 
-  function actualizarMetadatos() {
-    actualizarViaTexto();
-  }
- 
-  audio.addEventListener("play", () => {
-    actualizarMetadatos();
-    setInterval(actualizarMetadatos, INTERVALO_ACTUALIZACION);
+  audio.addEventListener("playing", () => {
+    estado.textContent = "✅ Reproduciendo correctamente";
+    estado.style.color = "#4ade80";
   });
-})();
+ 
+  audio.addEventListener("error", () => {
+    estado.textContent = "❌ Error al cargar el stream (revisa la consola del navegador con F12)";
+    estado.style.color = "#f87171";
+  });
+  
 </script>
 
 </body>
