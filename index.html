@@ -157,7 +157,7 @@
         }
 
         .publicidad-espacio {
-            min-height: 255px; /* Altura estándar para banners móviles (320x50 o 300x250) */
+            min-height: 70px; /* Altura estándar para banners móviles (320x50 o 300x250) */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -181,12 +181,12 @@
 </head>
 <body>
 
-   <!-- <div class="contenedor-publicidad-arriba">
+   <div class="contenedor-publicidad-arriba">
         <p class="publicidad-titulo">Publicidad</p>
         <div class="ads-superior-box" id="banner-arriba">
                 <!-- El código de Adsterra se inyectará aquí de forma automática -->
-   <!--     </div>
-    </div> -->
+        </div>
+    </div>
 
     <!-- CONTENEDOR CENTRAL (TARJETA DE RADIO) -->
     <div class="tarjeta-radio">
@@ -230,14 +230,12 @@
 
 
     <!-- 🚀 2. RECUADRO AUTO-REFRESCANTE PARA EL BANNER INFERIOR (300x250) -->
-<!--    <div class="contenedor-publicidad">
+    <div class="contenedor-publicidad">
         <p class="publicidad-titulo">Publicidad</p>
         <div class="publicidad-espacio" id="banner-abajo">
             <!-- El código de Adsterra se inyectará aquí de forma automática -->
-<!--        </div>
+        </div>
     </div>
-
-    <!-- 🛠️ SISTEMA DE ROTACIÓN/REFRESCO AUTOMÁTICO CADA 60 SEGUNDOS -->
 
 
 
@@ -307,16 +305,16 @@
         contenedor.innerHTML = "";
 
         window.atOptions = {
-            'key': 'e8213ad612ae47b8693959bc4709ab6e',
+            'key': 'ab324a06e328fdef5c9f83e517f1877a',
             'format': 'iframe',
-            'height': 250,
-            'width': 300,
+            'height': 50,
+            'width': 320,
             'params': {}
         };
 
         const script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://www.highrevenueformat.com/e8213ad612ae47b8693959bc4709ab6e/invoke.js";
+        script.src = "https://www.highrevenueformat.com/ab324a06e328fdef5c9f83e517f1877a/invoke.js";
         contenedor.appendChild(script);
     }
 
