@@ -242,23 +242,26 @@
 
 
 <script>
-
-    (function () {
+// ==========================================
+// metadatos
+// ==========================================
+(function () {
   const METADATA_URL = "https://radio-proxy.mayllong10.workers.dev/metadata";
   const INTERVALO_MS = 60000; // 60 segundos, ajustable
- 
+
   const tituloEl = document.getElementById("titulo-cancion");
   const oyentesEl = document.getElementById("oyentes");
- 
+
   async function actualizarMetadatos() {
     try {
       const res = await fetch(METADATA_URL, { cache: "no-store" });
-      const texto = (await res.text()).trim();
+      const textoCrudo = (await res.text()).trim();
+      const texto = textoCrudo.replace(/<[^>]*>/g, "").trim(); // quita cualquier etiqueta HTML
       const partes = texto.split(",");
- 
+
       const oyentesActuales = partes[0];
       const titulo = partes.slice(6).join(",").trim();
- 
+
       if (titulo) tituloEl.textContent = "🎵 " + titulo;
       if (oyentesActuales !== undefined) {
         oyentesEl.textContent = oyentesActuales + " oyente(s) conectados";
@@ -267,7 +270,7 @@
       console.error("Error obteniendo metadatos:", err);
     }
   }
- 
+
   actualizarMetadatos();
   setInterval(actualizarMetadatos, INTERVALO_MS);
 })();
