@@ -4,47 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>El Gran Johan Radio | Emisora En Vivo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         /* Configuración base de la página */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #000000; /* Fondo negro puro */
+            background-color: #000000;
             color: #ffffff;
             margin: 0;
-            padding: 20px 10px; 
+            padding: 20px 10px;
             display: flex;
-            flex-direction: column; /* Alinea la tarjeta y el bloque de anuncios uno abajo del otro */
-            justify-content: flex-start; 
-            align-items: center; /* Centra horizontalmente ambos bloques */
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
             min-height: 100vh;
             box-sizing: border-box;
         }
 
         /* Contenedor central principal */
         .tarjeta-radio {
-            background-color: #000000; 
+            background-color: #000000;
             width: 100%;
-            max-width: 400px; 
-            margin-top: 15px; 
+            max-width: 400px;
+            margin-top: 15px;
             padding: 20px;
-            border-radius: 15px; 
-            box-shadow: 0px 0px 20px rgba(246, 250, 1, 0.993); 
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px rgba(246, 250, 1, 0.993);
             text-align: center;
-            border: 1px solid #d4af37; /* Borde dorado */
+            border: 1px solid #d4af37;
             box-sizing: border-box;
         }
 
-        /* Contenedor de la Imagen / Logo */
+        /* Logo principal */
         .imagen-emisora-container {
             width: 100%;
-            max-width: 340px; 
-            margin: 0 auto 15px auto; 
+            max-width: 340px;
+            margin: 0 auto 0 auto;
             border-radius: 10px;
             overflow: hidden;
             display: flex;
             justify-content: center;
         }
-
         .imagen-emisora-container img {
             width: 100%;
             height: auto;
@@ -52,13 +54,29 @@
             object-fit: contain;
         }
 
-        /* Estilos del botón llamativo de la app */
-        .contenedor-app {
-            margin: 10px 0 15px 0; 
+        /* Segunda imagen, más pequeña que el logo principal */
+        .imagen-emisora-container2 {
+            width: 65%;
+            max-width: 210px;
+            margin: 0 auto 4px auto;
+            border-radius: 10px;
+            overflow: hidden;
             display: flex;
             justify-content: center;
         }
+        .imagen-emisora-container2 img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
 
+        /* Botón llamativo de la app */
+        .contenedor-app {
+            margin: 4px 0 15px 0;
+            display: flex;
+            justify-content: center;
+        }
         .boton-descarga {
             display: inline-flex;
             align-items: center;
@@ -67,28 +85,19 @@
             text-decoration: none;
             padding: 10px 22px;
             border-radius: 12px;
-            border: 2px solid #e81e4d; 
+            border: 2px solid #e81e4d;
             font-weight: bold;
             transition: all 0.3s ease;
             box-shadow: 0px 0px 15px rgba(232, 30, 77, 0.4);
             animation: pulsoBrillante 2s infinite;
         }
-
         .boton-descarga:hover {
             background-color: #e81e4d;
             transform: scale(1.05);
             box-shadow: 0px 0px 25px rgba(232, 30, 77, 0.8);
         }
-
-        .boton-descarga .icono-play {
-            font-size: 24px;
-            margin-right: 12px;
-        }
-
-        .boton-descarga .texto-boton {
-            text-align: left;
-        }
-
+        .boton-descarga .icono-play { font-size: 24px; margin-right: 12px; }
+        .boton-descarga .texto-boton { text-align: left; }
         .boton-descarga .texto-pequeno {
             font-size: 10px;
             display: block;
@@ -97,113 +106,177 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-
-        .boton-descarga .texto-grande {
-            font-size: 16px;
-            display: block;
-        }
-
+        .boton-descarga .texto-grande { font-size: 16px; display: block; }
         @keyframes pulsoBrillante {
             0% { box-shadow: 0px 0px 10px rgba(232, 30, 77, 0.4); }
             50% { box-shadow: 0px 0px 25px rgba(232, 30, 77, 0.8); border-color: #ff4a75; }
             100% { box-shadow: 0px 0px 10px rgba(232, 30, 77, 0.4); }
         }
 
-        /* Contenedor para el texto de abajo */
-        .texto-inferior {
-            margin-top: 15px;
-            text-align: center;
-            width: 100%;
+        /* Texto debajo del reproductor */
+        .texto-inferior { margin-top: 15px; text-align: center; width: 100%; }
+        .texto-inferior p { font-size: 15px; color: #a0a0b0; margin: 5px 0; }
+
+        /* Reproductor de radio */
+        .ejr-player {
+            --bg: #12181f;
+            --surface: #1c2530;
+            --coral: #ffc145;
+            --gold: #ffc145;
+            --text: #f5f1e8;
+            --text-dim: #8d99a6;
+
+            max-width: 480px;
+            margin: 0 auto;
+            background: linear-gradient(155deg, var(--surface), var(--bg));
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: var(--text);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.35);
         }
 
-        .texto-inferior p {
+        .ejr-toggle {
+            position: relative;
+            flex: 0 0 auto;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            border: none;
+            background: var(--coral);
+            color: #12181f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            overflow: visible;
+            transition: transform 0.15s ease;
+        }
+        .ejr-toggle:hover { transform: scale(1.06); }
+        .ejr-toggle:active { transform: scale(0.96); }
+
+        .ejr-toggle.playing::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: var(--coral);
+            opacity: 0.55;
+            animation: ejr-pulse 1.8s ease-out infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+        @keyframes ejr-pulse {
+            0% { transform: scale(1); opacity: 0.55; }
+            100% { transform: scale(1.8); opacity: 0; }
+        }
+
+        .ejr-ripple {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: var(--coral);
+            opacity: 0.6;
+            transform: scale(1);
+            pointer-events: none;
+            animation: ejr-ripple-anim 0.6s ease-out forwards;
+        }
+        @keyframes ejr-ripple-anim {
+            to { transform: scale(1.9); opacity: 0; }
+        }
+
+        .ejr-station {
+            font-family: 'Sora', sans-serif;
+            font-weight: 700;
             font-size: 15px;
-            color: #a0a0b0;
-            margin: 5px 0;
-        }
-
-        /* 🚀 CONTENEDOR PUBLICITARIO (FUERA DE LA TARJETA) */
-        .contenedor-publicidad {
-            width: 100%;
-            max-width: 400px; /* Mismo ancho de la tarjeta para mantener simetría */
-            margin-top: 15px; /* Espacio prudente abajo de la tarjeta principal */
-            padding: 15px;
-            background-color: #0b0b0e;
-            border: 1px dashed #3a3a4a; /* Línea discontinua discreta */
-            border-radius: 12px;
-            text-align: center;
-            box-sizing: border-box;
-        }
-
-        .contenedor-publicidad-arriba {
-            width: 100%;
-            max-width: 400px; /* Mismo ancho de la tarjeta para mantener simetría */
-            margin-top:1px; /* Espacio prudente abajo de la tarjeta principal */
-            padding: 5px;
-            background-color: #0b0b0e;
-            border: 1px dashed #3a3a4a; /* Línea discontinua discreta */
-            border-radius: 12px;
-            text-align: center;
-            box-sizing: border-box;
-        }
-
-        .publicidad-titulo {
-            font-size: 11px;
-            color: #555565;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-            margin-top: 0;
-        }
-
-        .publicidad-espacio {
-            min-height: 70px; /* Altura estándar para banners móviles (320x50 o 300x250) */
+            letter-spacing: 0.01em;
+            color: var(--text);
             display: flex;
-            justify-content: center;
             align-items: center;
-            background-color: #000000;
-            border-radius: 8px;
-            color: #000000;
-            font-size: 13px;
+            gap: 8px;
         }
 
-        .ads-superior-box{
-            min-height: 70px; /* Altura estándar para banners móviles (320x50 o 300x250) */
+        .ejr-eq { display: inline-flex; align-items: flex-end; gap: 2px; height: 12px; }
+        .ejr-eq i {
+            display: block;
+            width: 2.5px;
+            background: var(--gold);
+            border-radius: 1px;
+            height: 4px;
+        }
+        .ejr-eq.on i { animation: ejr-bounce 0.9s ease-in-out infinite; }
+        .ejr-eq.on i:nth-child(1) { animation-delay: 0s; }
+        .ejr-eq.on i:nth-child(2) { animation-delay: 0.15s; }
+        .ejr-eq.on i:nth-child(3) { animation-delay: 0.3s; }
+        .ejr-eq.on i:nth-child(4) { animation-delay: 0.45s; }
+        @keyframes ejr-bounce {
+            0%, 100% { height: 3px; }
+            50% { height: 12px; }
+        }
+
+        .ejr-volume {
             display: flex;
-            justify-content: center;
             align-items: center;
-            background-color: #000000;
-            border-radius: 8px;
-            color: #000000;
-            font-size: 13px;
+            gap: 5px;
+            color: var(--text-dim);
+        }
+        .ejr-volume input[type="range"] {
+            width: 60px;
+            accent-color: var(--coral);
+            cursor: pointer;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ejr-toggle.playing::before,
+            .ejr-ripple,
+            .ejr-eq.on i { animation: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- CONTENEDOR CENTRAL (TARJETA DE RADIO) -->
     <div class="tarjeta-radio">
 
-        <!-- CONTENEDOR DE LA IMAGEN (EL GRAN JOHAN) -->
+        <!-- Logo principal -->
         <div class="imagen-emisora-container">
             <img src="logo1.jpeg" alt="El Gran Johan">
         </div>
 
-        <!-- CONTENEDOR DE LA IMAGEN (EL GRAN JOHAN) -->
-        <div class="imagen-emisora-container">
+        <!-- Segunda imagen, más pequeña -->
+        <div class="imagen-emisora-container2">
             <img src="logo2.jpeg" alt="El Gran Johan">
         </div>
 
-        <!--REPRODUCTOR DE RADIO - Solo audio-->
-            <div style="max-width: 480px; margin: 1px auto 1px auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #000000; border-radius: 12px; padding: 16px; color: #ff0101; text-align:center;">
-              <audio id="audioPlayer" controls controlsList="nodownload" autoplay="true" preload="true" style="width: 100%;">
-                <source src="https://radio.msoftware.uk/radio.mp3" type="audio/mpeg">
-              </audio>
+        <!-- REPRODUCTOR DE RADIO -->
+        <div class="ejr-player">
+            <button id="ejr-toggle" class="ejr-toggle" aria-label="Reproducir">
+                <svg id="ejr-icon-play" viewBox="0 0 24 24" width="22" height="22"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+                <svg id="ejr-icon-pause" viewBox="0 0 24 24" width="22" height="22" style="display:none"><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></svg>
+            </button>
+
+            <div class="ejr-station">
+                El Gran Johan Radio
+                <span class="ejr-eq" id="ejr-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
             </div>
+
+            <div class="ejr-volume">
+                <svg viewBox="0 0 24 24" width="16" height="16"><path d="M3 10v4h4l5 5V5L7 10H3z" fill="currentColor"/></svg>
+                <input id="ejr-vol" type="range" min="0" max="1" step="0.01" value="1">
+            </div>
+
+            <audio id="ejr-audio" preload="none">
+                <source src="https://radio.msoftware.uk/radio.mp3" type="audio/mpeg">
+            </audio>
+        </div>
 
         <!-- BOTÓN LLAMATIVO PARA DESCARGAR LA APP -->
         <div class="contenedor-app">
-            <a href="#" class="boton-descarga" target="_blank">
+            <a href="https://msoftware.uk/NewEmisorApp-Update/NewEmisorApp7.4.apk" class="boton-descarga" target="_blank">
                 <span class="icono-play">🤖</span>
                 <span class="texto-boton">
                     <span class="texto-pequeno">Disponible para Android</span>
@@ -213,18 +286,54 @@
             </a>
         </div>
 
-        <!-- TEXTO DEBAJO DEL REPRODUCTOR -->
+        <!-- TEXTO DEBAJO -->
         <div class="texto-inferior">
-            <p>🎙 *¡Gracias por sintonizar El Gran Johan!*</p>
-            <p>Mira las ligas mas importantes del <b>FUTBOL</b> en NewTvApp mas informacion en <a href="https://msoftware.uk" target="_blank">msoftware.uk</a></p> 
-            <p>¡Desarrollado por <b>Msoftware</b>! </p>
+            <p>🎙 ¡Gracias por sintonizar El Gran Johan!</p>
+            <p>Mira las ligas más importantes del <b>FUTBOL</b> en NewTvApp, más información en <a href="https://msoftware.uk" target="_blank">msoftware.uk</a></p>
+            <p>¡Desarrollado por <b>Msoftware</b>!</p>
         </div>
 
-    </div> <!-- FIN DE LA TARJETA DE RADIO -->
+    </div>
 
-<script>
+    <script>
+    (function () {
+        const audio = document.getElementById("ejr-audio");
+        const toggleBtn = document.getElementById("ejr-toggle");
+        const iconPlay = document.getElementById("ejr-icon-play");
+        const iconPause = document.getElementById("ejr-icon-pause");
+        const eq = document.getElementById("ejr-eq");
+        const volSlider = document.getElementById("ejr-vol");
 
-</script>
+        function setPlayingUI(isPlaying) {
+            iconPlay.style.display = isPlaying ? "none" : "block";
+            iconPause.style.display = isPlaying ? "block" : "none";
+            toggleBtn.classList.toggle("playing", isPlaying);
+            eq.classList.toggle("on", isPlaying);
+        }
+
+        function crearRipple() {
+            const ripple = document.createElement("span");
+            ripple.className = "ejr-ripple";
+            toggleBtn.appendChild(ripple);
+            ripple.addEventListener("animationend", () => ripple.remove());
+        }
+
+        toggleBtn.addEventListener("click", () => {
+            crearRipple();
+            if (audio.paused) {
+                audio.play().catch(() => {});
+            } else {
+                audio.pause();
+            }
+        });
+
+        audio.addEventListener("playing", () => setPlayingUI(true));
+        audio.addEventListener("pause", () => setPlayingUI(false));
+        audio.addEventListener("waiting", () => setPlayingUI(false));
+
+        volSlider.addEventListener("input", () => { audio.volume = volSlider.value; });
+    })();
+    </script>
 
 </body>
 </html>
