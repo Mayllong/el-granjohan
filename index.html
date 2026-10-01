@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Gran Johan Radio| Emisora En Vivo</title>
+    <title>El Gran Johan Radio | Emisora En Vivo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -456,6 +456,23 @@
  <div class="barra-onda"></div><div class="barra-onda"></div>
  <div class="barra-onda"></div><div class="barra-onda"></div>
  </div>
+
+<script>
+    // Guardamos el título original en una variable
+    let textoTitulo = "El Gran Johan Radio | Emisora En Vivo ";
+
+    // Función que se encarga de mover el texto
+    function moverTitulo() {
+        // Toma la primera letra y la pasa al final
+        textoTitulo = textoTitulo.substring(1, textoTitulo.length) + textoTitulo.substring(0, 1);
+        // Actualiza el título de la pestaña
+        document.title = textoTitulo;
+    }
+
+    // Ejecuta la función cada 200 milisegundos (ajusta el número si quieres más rápido o lento)
+    setInterval(moverTitulo, 200);
+</script>
+
 
 </body>
 </html>
