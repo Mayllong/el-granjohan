@@ -298,34 +298,70 @@
     }
 }
 
-        .btn-facebook {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #1877F2; /* Azul oficial */
-            color: #ffffff;
-            font-family: Arial, sans-serif;
-            font-size: 16px;
-            font-weight: bold;
-            text-decoration: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            transition: background-color 0.3s, transform 0.2s;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+/* Contenedor que apila los botones de redes */
+.redes-sociales {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+}
 
-        /* Estilos para tu imagen PNG */
-        .btn-facebook img {
-            width: 20px;         /* Ajusta el ancho del icono */
-            height: 20px;        /* Ajusta el alto del icono */
-            margin-right: 10px;  /* Separa el icono del texto */
-            object-fit: contain; /* Evita que la imagen se deforme */
-        }
+/* Hace que los 3 botones tengan el mismo ancho */
+.redes-sociales a {
+    width: 100%;
+    max-width: 260px;
+    box-sizing: border-box;
+}
 
-        .btn-facebook:hover {
-            background-color: #145dbf;
-            transform: translateY(-2px);
-        }
+.btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #25D366;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.btn-whatsapp:hover {
+    background-color: #1da851;
+    transform: translateY(-2px);
+}
+
+.btn-instagram {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, #f09433, #dc2743, #bc1888);
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    transition: filter 0.3s, transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.btn-instagram:hover {
+    filter: brightness(1.15);
+    transform: translateY(-2px);
+}
+
+/* Iconos de los nuevos botones */
+.btn-whatsapp img,
+.btn-instagram img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    object-fit: contain;
+}
 
 </style>
 </head>
@@ -386,12 +422,25 @@
             <p>¡Desarrollado por <b>Msoftware</b>!</p>
         </div>
 
-    <!-- Estructura del Botón -->
+<!-- BOTONES DE REDES SOCIALES -->
+<div class="redes-sociales">
+
     <a href="https://www.facebook.com/share/19Zf5irxAq/" target="_blank" class="btn-facebook">
-        <!-- Reemplaza URL_RAW_DE_GITHUB por tu enlace -->
         <img src="facebook.png" alt="Facebook Icon">
         Visítanos en Facebook
     </a>
+
+    <a href="https://wa.me/57TUNUMERO?text=Hola%2C%20quiero%20saludar%20a%20El%20Gran%20Johan%20Radio" target="_blank" class="btn-whatsapp">
+        <img src="whatsapp.png" alt="WhatsApp Icon">
+        Escríbenos por WhatsApp
+    </a>
+
+    <a href="https://www.instagram.com/TUUSUARIO" target="_blank" class="btn-instagram">
+        <img src="instagram.png" alt="Instagram Icon">
+        Síguenos en Instagram
+    </a>
+
+</div>
 
     </div>
 
